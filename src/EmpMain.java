@@ -29,6 +29,12 @@ public class EmpMain {
 				}else if(menu.equals("2")) {//사원등록 
 					empInsert();
 					empOutput();
+				}else if(menu.equals("3")) {//사원수정 
+					empEdit();
+					empOutput();
+				}else if(menu.equals("4")) {//사원삭제
+					empDel();
+					empOutput();
 				}
 			
 			}while(true);
@@ -57,6 +63,33 @@ public class EmpMain {
 		String position = conInput("직급");
 		
 		empDataSet.empList.put(name, new EmpVO(no, name, tel, depart, position));
+	}
+	//사원수정 (tel, depart, position만 수정가능)
+	public void empEdit() {
+		//사원명 입력받기 
+		String empName = conInput("수정할 사원 명"); 
+		// 해당 사원의 정보가 없을때 
+		EmpVO vo = empDataSet.empList.get(empName);
+		if(vo==null) {
+			System.out.println("존재하지 않는 사원명입니다... ");
+		}else { //해당사원의 정보가 있을 때 
+			// 연락처 , 부서명, 직급 
+			String subMenu = conInput("수정할 필드 선택 [1.연락처, 2.부서명, 3.직급]");
+			if(subMenu.equals("1")) {
+				String tel = conInput("수정할 연락처");
+				vo.setTel(tel);
+			}else if(subMenu.equals("2")) {
+				String depart = conInput("수정할 부서명");
+				vo.setDepart(depart);
+			}else if(subMenu.equals("3")) {
+				String position = conInput("수정할 직급");
+				vo.setPosition(position);
+			}
+		}
+	}
+	public void empDel() { //사원명 입력받아 삭제 
+		String empName = conInput("삭제할 사원명");
+		empDataSet.empList.remove(empName);
 	}
 	//콘솔에서 문자 입력받아서 리턴하는 메소드 
 	public String conInput(String msg) {
