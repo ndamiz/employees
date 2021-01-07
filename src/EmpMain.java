@@ -24,18 +24,15 @@ public class EmpMain {
 				String menu=conInput("메뉴[1.사원전체 목록, 2.사원등록, 3.사원수정, 4.사원삭제, 5.프로그램종료]");
 				if(menu.equals("5")) {
 					break;
-				}else if(menu.equals("1")) {//사원목록 
-					empOutput();
 				}else if(menu.equals("2")) {//사원등록 
 					empInsert();
-					empOutput();
 				}else if(menu.equals("3")) {//사원수정 
 					empEdit();
-					empOutput();
 				}else if(menu.equals("4")) {//사원삭제
 					empDel();
-					empOutput();
 				}
+				//모든 문장이 끝나고 Output이 필요하므로, 아예 if 문 밖으로 빼서 실행되게 하자  
+				empOutput();
 			
 			}while(true);
 			
@@ -91,8 +88,6 @@ public class EmpMain {
 		String empName = conInput("삭제할 사원명");
 		empDataSet.empList.remove(empName);
 	}
-	
-	
 	//콘솔에서 문자 입력받아서 리턴하는 메소드 
 	public String conInput(String msg) {
 		System.out.print(msg+ "=");
