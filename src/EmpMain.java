@@ -91,6 +91,8 @@ public class EmpMain {
 		String empName = conInput("삭제할 사원명");
 		empDataSet.empList.remove(empName);
 	}
+	
+	
 	//콘솔에서 문자 입력받아서 리턴하는 메소드 
 	public String conInput(String msg) {
 		System.out.print(msg+ "=");
